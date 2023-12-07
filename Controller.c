@@ -62,6 +62,29 @@ void deletePrevBlock() {
 	GotoXY(Cursor.X, Cursor.Y);
 }
 
+void previewBlock(int shape, int rotate) {
+	COORD Pos = Cursor = getCursor();
+	while (!IsCollision(curShape, turn, Pos.X, Pos.Y + 1)) {
+		++Pos.Y;
+		if (IsCollision(curShape, turn, Pos.X, Pos.Y + 1) == true) {
+			previewPoint.X = Pos.X;
+			previewPoint.Y = Pos.Y;
+			prevBlockROW = BlockROW = Pos.X / 2 - BoardX / 2;
+			prevBlockCOL = BlockCOL = Pos.Y - BoardY;
+			for (int y = 0; y < BlockSIZE; y++) {
+				for (int x = 0; x < BlockSIZE; x++) {
+					if (Blocks[shape][rotate][y][x] == 2) {
+						board[BlockCOL + y][BlockROW + x] = 2;
+						GotoXY(Pos.X + x * 2, Pos.Y + y);
+						prevAddBlockColor();
+					}
+				}
+			}
+			GotoXY(Cursor.X, Cursor.Y);
+			return;
+		}
+	}
+}
 
 
 void blockFixed(int shape, int rotate) {
