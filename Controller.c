@@ -117,6 +117,19 @@ void blockFixed(int shape, int rotate) {
 	IsNextBlock = true;
 }
 
+boolean IsMaxLine() {
+	for (int y = BoardHeight - 2; y > 1; y--) {
+		int count = 0;
+		for (int x = 1; x < BoardWidth - 1; x++) {
+			if (board[y][x] >= 3)
+				++count;
+			if (count >= 12)
+				return true;
+		}
+	}
+	return false;
+}
+
 
 void deleteLine() {
 	COORD Pos = Cursor = getCursor();
