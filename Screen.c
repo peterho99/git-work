@@ -247,6 +247,32 @@ void ShowNextBlock() {
 		GotoXY(Cursor.X, Cursor.Y);
 	}
 
-	
+	void EndGameFrame() {
+		for (int y = 1; y < BoardHeight - 1; y++) {
+			for (int x = 1; x < BoardWidth - 1; x++) {
+				if (board[y][x] >= 3) {
+					GotoXY(BoardX + x * 2, BoardY + y);
+					printf("▣");
+				}
+			}
+			Sleep(150 - y * 5);
+		}
+
+		textcolor(RED);
+		for (int i = 7; i > 1; i--) {
+			GotoXY(BlockStartX, BlockStartY + 1);
+			printf("게임종료");
+			GotoXY(BlockStartX - 4, BlockStartY + 2);
+			printf("시작화면 %d초 전!!", i / 2);
+			Sleep(300);
+			GotoXY(BlockStartX, BlockStartY + 1);
+			printf("        ");
+			GotoXY(BlockStartX - 4, BlockStartY + 2);
+			printf("                   ");
+			Sleep(200);
+		}
+		system("cls");
+	}
+
 
 
