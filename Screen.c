@@ -127,6 +127,24 @@ void InGameFrame() {
 			Sleep(10);
 		}
 	}
+	textcolor(WHITE);
+	GotoXY(picture_X, picture_Y + 19);
+	if (level == 0) printf("◎ 게임 난이도 : 쉬움");
+	else if (level == 1) printf("◎ 게임 난이도 : 보통");
+	else if (level == 2) printf("◎ 게임 난이도 : 어려움");
+
+	GotoXY(picture_X, picture_Y + 21);
+	printf("◎ 게임 키 설명");
+	printScore();
+	GotoXY(picture_X, picture_Y + 22);
+	printf("  ▲          : 블럭 회전");
+	GotoXY(picture_X, 23);
+	printf("◀   ▶        : 왼쪽 이동 / 오른쪽 이동");
+	GotoXY(picture_X, 24);
+	printf("  ▼          : 아래 이동");
+	GotoXY(picture_X, 25);
+	printf("■■■■      : Space BAR (맨 아래로...)");
+
 	
 }
 
