@@ -13,6 +13,10 @@ void NextShape() {
 	srand(time(NULL));
 	nexShape = rand() % BlockType;
 }
+void printScore() {
+	GotoXY(36, 20);
+	printf("¢Á Á¡¼ö : %d", score);
+}
 
 
 
